@@ -1,29 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Gamoya.Weather.WeatherUnlocked</RootNamespace>
-    <AssemblyName>Gamoya.Weather.WeatherUnlocked</AssemblyName>
-    <Authors>Thomas Kment</Authors>
-    <Product>Gamoya.Weather.WeatherUnlocked</Product>
-    <Copyright>Copyright © Gamoya 2024</Copyright>
-    <Title>Weather Unlocked REST-api-client</Title>
-    <Description>Weather Unlocked REST-api-client</Description>
-    <PackageId>Gamoya.Weather.WeatherUnlocked</PackageId>
-    <Version>1.0.0</Version>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Gamoya/WeatherUnlocked</RepositoryUrl>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageTags>Weather;Unlocked</PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+		<RootNamespace>Gamoya.Weather.WeatherUnlocked</RootNamespace>
+		<AssemblyName>Gamoya.Weather.WeatherUnlocked</AssemblyName>
+		<Authors>Thomas Kment</Authors>
+		<Product>Gamoya.Weather.WeatherUnlocked</Product>
+		<Copyright>Copyright © Gamoya 2024</Copyright>
+		<Title>Weather Unlocked REST-api-client</Title>
+		<Description>Weather Unlocked REST-api-client</Description>
+		<PackageId>Gamoya.Weather.WeatherUnlocked</PackageId>
+		<Version>1.0.1</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/Gamoya/WeatherUnlocked</RepositoryUrl>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageTags>Weather;Unlocked</PackageTags>
+		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">True</IsAotCompatible>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Text.Json" Version="8.0.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Text.Json" Version="8.0.4" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 
 </Project>

@@ -19,6 +19,14 @@ namespace Gamoya.Weather.WeatherUnlocked {
         private readonly string _appKey;
         private readonly string _languageCode;
 
+#if NET8_0_OR_GREATER
+
+        static WeatherUnlockedClient() {
+            _jsonSerializerOptions.TypeInfoResolver = SourceGenerationContext.Default;
+        }
+
+#endif
+
         public WeatherUnlockedClient(string appId, string appKey, string languageCode, bool ssl) {
             _httpClient = CreateHttpClient(ssl);
             _disposeHttpClient = true;
@@ -54,12 +62,13 @@ namespace Gamoya.Weather.WeatherUnlocked {
             if (response.IsSuccessStatusCode) {
                 return JsonSerializer.Deserialize<T>(content, _jsonSerializerOptions);
             } else {
+                Error error;
                 try {
-                    var error = JsonSerializer.Deserialize<Error>(content, _jsonSerializerOptions);
-                    throw new WeatherUnlockedException(error.Message);
+                    error = JsonSerializer.Deserialize<Error>(content, _jsonSerializerOptions);
                 } catch {
                     throw new WeatherUnlockedException(content);
                 }
+                throw new WeatherUnlockedException(error.Message);
             }
         }
 

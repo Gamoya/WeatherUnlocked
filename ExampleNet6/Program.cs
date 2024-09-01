@@ -1,10 +1,10 @@
 ﻿namespace Gamoya.Weather.WeatherUnlocked.Example {
     internal class Program {
-        static async Task Main(string[] args) {
-            string appId = Environment.GetEnvironmentVariable("WEATHER_UNLOCKED_APP_ID");
-            string appKey = Environment.GetEnvironmentVariable("WEATHER_UNLOCKED_APP_KEY");
-            string languageCode = "en";
-            bool ssl = false;
+        static async Task Main() {
+            var appId = Environment.GetEnvironmentVariable("WEATHER_UNLOCKED_APP_ID");
+            var appKey = Environment.GetEnvironmentVariable("WEATHER_UNLOCKED_APP_KEY");
+            var languageCode = "en";
+            var ssl = false;
 
             var latitude = 52.520008m;
             var longitude = 13.404954m;
@@ -15,7 +15,7 @@
 
                 var weatherForecast = await weatherUnlockedClient.GetForecastWeatherAsync(latitude, longitude);
                 foreach (var forecastDay in weatherForecast.Days) {
-                    Console.WriteLine(string.Format("The temperature in Berlin on {0} is {1}°C", forecastDay.Date, currentWeather.TemperatureCelsius));
+                    Console.WriteLine(string.Format("The temperature in Berlin on {0} is {1}°C", forecastDay.Date, forecastDay.TemperatureMaxCelsius));
                 }
             }
         }

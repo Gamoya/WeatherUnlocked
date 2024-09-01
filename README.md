@@ -1,5 +1,11 @@
 # WeatherUnlocked
-A .NET client for Weather Unlocked
+An aot compatible .NET client for Weather Unlocked (http://www.weatherunlocked.com/)
+
+[![NuGet](https://img.shields.io/nuget/v/Gamoya.Weather.WeatherUnlocked)](https://www.nuget.org/packages/Gamoya.Weather.WeatherUnlocked)
+[![GitHub](https://img.shields.io/github/license/Gamoya/WeatherUnlocked)](https://github.com/Gamoya/WeatherUnlocked/blob/main/LICENSE)
+
+## Prerequisites
+Get API-Key from http://www.weatherunlocked.com/
 
 ## Usage
 
@@ -12,7 +18,7 @@ bool ssl = false;
 decimal latitude = 52.520008m;
 decimal longitude = 13.404954m;
 
-using (var weatherUnlockedClient = new Gamoya.Weather.WeatherUnlockedClient(appId, appKey, languageCode, ssl)) {
+using (var weatherUnlockedClient = new Gamoya.Weather.WeatherUnlocked.WeatherUnlockedClient(appId, appKey, languageCode, ssl)) {
     var currentWeather = await GetCurrentWeatherAsync(latitude, longitude);
     var forecastWeather = await GetForecastWeatherAsync(latitude, longitude);
 }
